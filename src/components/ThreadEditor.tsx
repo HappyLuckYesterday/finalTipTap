@@ -28,12 +28,12 @@ export const ThreadEditor: React.FC<ThreadEditorProps> = ({
 
   useEffect(() => {
     if (enterCount == 2) {  
-      const splitindex = editor?.getHTML().indexOf("<p></p><p></p>");
+      const splitindex = editor?.getHTML().indexOf("<p></p>");
       const  prevHTML = editor?.getHTML().slice(0, splitindex!+7)!.replaceAll("<p></p><p></p>","<p>&nbsp;</p>")!.replaceAll("<p></p>","<p>&nbsp;</p>")!;
-      const lastHTML = editor?.getHTML().slice(splitindex!+14)!.replaceAll("<p></p><p></p>","<p>&nbsp;</p>")!.replaceAll("<p></p>","<p>&nbsp;</p>")!;
+      const lastHTML = editor?.getHTML().slice(splitindex!+7)!.replaceAll("<p></p><p></p>","<p>&nbsp;</p>")!.replaceAll("<p></p>","<p>&nbsp;</p>")!;
       // setThreadItems([...threadItems, editor?.getHTML()!.replaceAll("<p></p><p></p>","<p>&nbsp;</p>")!.replaceAll("<p></p>","<p>&nbsp;</p>")!]);
       setThreadItems([...threadItems, prevHTML!]);
-      console.log();
+      console.log(editor?.getHTML());
       // editor?.commands.setThreadItem();
       editor?.commands.setContent(lastHTML!)
       setEnterCount(0);
